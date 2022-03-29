@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import stuba.fei.bp.entity.Tournaments;
+import stuba.fei.bp.entity.Users;
 import stuba.fei.bp.entity.repositary.TournamentsRepository;
 import stuba.fei.bp.entity.request.TournamentsRequest;
 
@@ -37,5 +38,13 @@ public class TournamentsService {
 
     public void delete(String name) {
         this.tournamentsRepository.customDelete(name);
+    }
+
+    public Tournaments getTournamentByName(String name) {
+        Tournaments tournament = this.tournamentsRepository.findByName(name);
+        if(tournament == null){
+            return null;
+        }
+        return tournament;
     }
 }

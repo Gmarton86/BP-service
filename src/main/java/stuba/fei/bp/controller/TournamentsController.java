@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import stuba.fei.bp.entity.request.TournamentsRequest;
 import stuba.fei.bp.entity.response.TournamentResponse;
+import stuba.fei.bp.entity.response.UsersResponse;
 import stuba.fei.bp.service.TournamentsService;
 
 import java.util.List;
@@ -33,4 +34,9 @@ public class TournamentsController {
         this.tournamentsService.delete(name);
     }
 
+
+    @GetMapping("/{name}")
+    public TournamentResponse geTournamentByName(@PathVariable("name") String name) {
+        return new TournamentResponse(this.tournamentsService.getTournamentByName(name));
+    }
 }
