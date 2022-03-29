@@ -18,4 +18,7 @@ public class Tournaments implements Serializable {
     private String Name;
     private Integer Tables;
     private Integer AdminID;
+    private String Time;
+    private String Date;
+    private String Place;
 }
