@@ -1,15 +1,10 @@
 package stuba.fei.bp.service;
 
-import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stuba.fei.bp.entity.Players;
-import stuba.fei.bp.entity.Tournaments;
-import stuba.fei.bp.entity.Users;
 import stuba.fei.bp.entity.repositary.PlayersRepository;
 import stuba.fei.bp.entity.request.PlayerRequest;
-import stuba.fei.bp.entity.request.TournamentsRequest;
-import stuba.fei.bp.entity.response.PlayerResponse;
 
 import java.util.List;
 
@@ -28,18 +23,18 @@ public class PlayersService {
     }
 
     public Players getPlayerById(Long id) {
-        Players player = this.repository.findById(id);
-        if(player == null){
+        Players players = this.repository.findCustomById(id);
+        if(players == null){
             return null;
         }
-        return player;
+        return players;
     }
 
     public Players create(PlayerRequest request) {
         Players players = new Players();
-        players.setName(request.getName());
         players.setUsername(request.getUsername());
-        players.setRank(request.getRank());
+        players.setSurname(request.getSurname());
+        players.setPlayerRank(request.getRank());
         return this.repository.save(players);
     }
 }

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class PlayerRequest {
     private Long ID;
-    private String Name;
-    private String Username;
+    private String username;
+    private String surname;
     private Integer Rank;
 }

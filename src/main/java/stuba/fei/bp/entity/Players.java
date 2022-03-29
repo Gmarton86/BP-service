@@ -15,8 +15,7 @@ public class Players implements Serializable {
     @Id
     @GeneratedValue
     private Long ID;
-    private String Name;
-    private String Username;
-    private Integer Rank;
-
+    private String username;
+    private String surname;
+    private Integer PlayerRank;
 }
