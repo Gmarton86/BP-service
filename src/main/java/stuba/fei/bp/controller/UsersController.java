@@ -30,4 +30,14 @@ public class UsersController {
     public UsersResponse updatePassword(@PathVariable("username") String username, @PathVariable("password") String password) {
         return new UsersResponse(this.service.updatePassword(username, password));
     }
+
+    @GetMapping("/login/{username}/{password}")
+    public UsersResponse loginUser(@PathVariable("username") String username, @PathVariable("password") String password) {
+        return new UsersResponse(this.service.loginUser(username, password));
+    }
+
+    @GetMapping("/loginTrainer/{username}/{password}")
+    public UsersResponse loginTrainer(@PathVariable("username") String username, @PathVariable("password") String password) {
+        return new UsersResponse(this.service.loginTrainer(username, password));
+    }
 }

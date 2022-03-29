@@ -44,4 +44,14 @@ public class UsersService {
         this.repository.save(user);
         return user;
     }
+
+    public Users loginUser(String username, String password) {
+        Users user = this.repository.getUserByUsernameAndPassword(username, password);
+        return user;
+    }
+
+    public Users loginTrainer(String username, String password) {
+        Users user = this.repository.getTrainerByUsernameAndPassword(username, password);
+        return user;
+    }
 }
