@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import stuba.fei.bp.entity.Matches;
 
+import java.util.List;
+
 @Repository
 @Transactional
 public interface MatchesRepository extends CrudRepository<Matches, Long> {
@@ -18,4 +20,7 @@ public interface MatchesRepository extends CrudRepository<Matches, Long> {
     @Query("delete from Matches "
             + " where TournamentName = :name")
     void customDelete(@Param("name") String name);
+    @Query("select u from Matches as u "
+            + " where u.TournamentName = :name")
+    List<Matches> getAllByName(@Param("name") String name);
 }

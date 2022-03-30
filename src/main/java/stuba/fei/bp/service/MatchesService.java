@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import stuba.fei.bp.entity.Matches;
 import stuba.fei.bp.entity.repositary.MatchesRepository;
 import stuba.fei.bp.entity.request.MatchesRequest;
+import stuba.fei.bp.entity.request.MatchesUpdateRequest;
+
+import java.util.List;
 
 @Service
 public class MatchesService {
@@ -44,4 +47,25 @@ public class MatchesService {
         this.repository.customDelete(name);
     }
 
+    public List<Matches> getMatches(String name) {
+        return this.repository.getAllByName(name);
+    }
+
+    public Matches updateMatch(MatchesUpdateRequest request) {
+        Matches matches = this.getMatchByPlayers(request.getPlayer1ID(), request.getPlayer2ID());
+        matches.setWinnerId(request.getWinnerID());
+        matches.setPlayer1ID(request.getUpdatePlayer1ID());
+        matches.setPlayer2ID(request.getUpdatePlayer2ID());
+        matches.setStol(request.getStol());
+        matches.setScore(request.getScore());
+        this.repository.save(matches);
+        return matches;
+    }
+
+    public Matches updateStol(Integer player1ID, Integer player2ID, Integer stol) {
+        Matches matches = this.getMatchByPlayers(player1ID, player2ID);
+        matches.setStol(stol);
+        this.repository.save(matches);
+        return matches;
+    }
 }

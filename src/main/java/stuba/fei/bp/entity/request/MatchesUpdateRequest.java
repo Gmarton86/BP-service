@@ -3,16 +3,14 @@ package stuba.fei.bp.entity.request;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-
 @Getter
 @Setter
-public class MatchesRequest {
-    private Long ID;
-    private String TournamentName;
+public class MatchesUpdateRequest {
+    private Integer WinnerID;
     private Integer Player1ID;
     private Integer Player2ID;
-    private Integer WinnerId;
+    private Integer UpdatePlayer1ID;
+    private Integer UpdatePlayer2ID;
     private Integer Stol;
     private String Score;
 }

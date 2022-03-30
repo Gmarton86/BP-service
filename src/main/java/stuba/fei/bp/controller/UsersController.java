@@ -22,7 +22,7 @@ public class UsersController {
     }
 
     @GetMapping("/{username}")
-    public UsersResponse getProductByUsername(@PathVariable("username") String username) {
+    public UsersResponse getUserByUsername(@PathVariable("username") String username) {
         return new UsersResponse(this.service.getUserByUsername(username));
     }
 

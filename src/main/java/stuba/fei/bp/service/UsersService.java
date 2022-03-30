@@ -28,11 +28,15 @@ public class UsersService {
     }
 
     public Users getUserByUsername(String username) {
-        Users user = this.repository.findByUsername(username);
-        if(user == null){
+        try {
+            Users user = this.repository.findByUsername(username);
+            if(user == null){
+                return null;
+            }
+            return user;
+        } catch (Exception e) {
             return null;
         }
-        return user;
     }
 
     public Users updatePassword(String username, String password) {
