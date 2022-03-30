@@ -29,7 +29,7 @@ public class PlayersController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PlayerResponse addTournament(@RequestBody PlayerRequest request){
+    public PlayerResponse addPlayer(@RequestBody PlayerRequest request){
         return new PlayerResponse(this.service.create(request));
     }
 }

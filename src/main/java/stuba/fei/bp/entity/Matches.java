@@ -20,4 +20,5 @@ public class Matches implements Serializable {
     private Integer Player2ID;
     private Integer WinnerId;
     private Integer Stol;
+    private String Score;
 }

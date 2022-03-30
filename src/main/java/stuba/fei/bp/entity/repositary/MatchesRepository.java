@@ -6,20 +6,16 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import stuba.fei.bp.entity.Tournaments;
-
-import java.util.List;
+import stuba.fei.bp.entity.Matches;
 
 @Repository
 @Transactional
-public interface TournamentsRepository extends CrudRepository<Tournaments, Long> {
-    List<Tournaments> findAll();
+public interface MatchesRepository extends CrudRepository<Matches, Long> {
+    @Query("select u from Matches as u "
+            + " where u.Player1ID = :player1ID and u.Player2ID = :player2ID")
+    Matches getMatchByPlayers(@Param("player1ID") Integer player1ID, @Param("player2ID") Integer player2ID);
     @Modifying
-    @Query("delete from Tournaments "
-            + " where Name = :name")
+    @Query("delete from Matches "
+            + " where TournamentName = :name")
     void customDelete(@Param("name") String name);
-
-    @Query("select t from Tournaments as t"
-            + " where t.Name = :name")
-    Tournaments findByName(@Param("name") String name);
 }
