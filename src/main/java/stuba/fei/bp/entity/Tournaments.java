@@ -3,10 +3,7 @@ package stuba.fei.bp.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
@@ -14,7 +11,7 @@ import java.io.Serializable;
 @Entity
 public class Tournaments implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long ID;
     @Column(unique = true)
     private String Name;
